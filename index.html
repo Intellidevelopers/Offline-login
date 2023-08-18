@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Login & Registration Form</title>
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #888;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #333;
+}
+
+form {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+} 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-toggle">
+        <button id="login-toggle">Log In</button>
+        <button id="register-toggle">Register</button>
+      </div>
+      <form id="login-form">
+        <h1>Log In</h1>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+      </form>
+      <form id="register-form">
+        <h1>Register</h1>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+const loginToggle = document.getElementById('login-toggle');
+const registerToggle = document.getElementById('register-toggle');
+
+// Toggle between login and register forms
+loginToggle.addEventListener('click', () => {
+  loginForm.style.display = 'block';
+  registerForm.style.display = 'none';
+  loginToggle.style.color = '#333';
+  registerToggle.style.color = '#888';
+});
+
+registerToggle.addEventListener('click', () => {
+  loginForm.style.display = 'none';
+  registerForm.style.display = 'block';
+  loginToggle.style.color = '#888';
+  registerToggle.style.color = '#333';
+});
+
+// Handle login form submission
+loginForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  // Add your login logic here
+  // For example, you can use Firebase Authentication
+  const email = loginForm.email.value;
+  const password = loginForm.password.value;
+
+  // Perform login operations here
+});
+
+// Handle register form submission
+registerForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  // Add your register logic here
+  // For example, you can use Firebase Authentication
+  const username = registerForm.username.value;
+  const email = registerForm.email.value;
+  const password = registerForm.password.value;
+
+  // Perform register operations here
+});
+
+// Show login form by default
+loginForm.style.display = 'block';
+registerForm.style.display = 'none';
+loginToggle.style.color = '#333';
+registerToggle.style.color = '#888'; 
+  </script>
+</body>
+<script>
+  if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+  });
+}
+</script>
+</html>
